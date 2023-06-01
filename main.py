@@ -9,7 +9,7 @@ class Transicoes:
 class Automato:
     def __init__(self):
         self.alfabeto = ['a','b']
-        self.estados = ['q0','q1','q2','q3','q4','q5','q6']
+        self.estados = ['q0','q1','q2','q3','q4','q5','q6', 'q7']
         self.transicoes = []
         self.estadoInicial = 'q0'
         self.estadoFinal = ['q4', 'q5', 'q6', 'q7']
