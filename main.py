@@ -9,13 +9,13 @@ class Transicoes:
 class Automato:
     def __init__(self):
         self.alfabeto = ['a','b']
-        self.estados = ['q0','q1','q2','q3','q4','q5','q6', 'q7']
+        self.estados = ['q0','q1','q2','q3','q4','q5','q6']
         self.transicoes = []
         self.estadoInicial = 'q0'
-        self.estadoFinal = ['q4', 'q5', 'q6', 'q7']
+        self.estadoFinal = ['q3']
 
     def inserirFuncaoTransicao(self, q, a, p):
-        self.transicoes.append(Transicoes(q,a,q))
+        self.transicoes.append(Transicoes(q,a,p))
 
     def funcaoTransicao(self, q, a):
         for i in self.transicoes:
@@ -32,20 +32,27 @@ class Automato:
 
 a=Automato()
 a.inserirFuncaoTransicao('q0','a','q1')
-a.inserirFuncaoTransicao('q0','b','q0')
-a.inserirFuncaoTransicao('q1','a','q2')
-a.inserirFuncaoTransicao('q1','b','q3')
-a.inserirFuncaoTransicao('q2','a','q4')
-a.inserirFuncaoTransicao('q2','b','q5')
+a.inserirFuncaoTransicao('q0','b','q5')
+a.inserirFuncaoTransicao('q1','a','q5')
+a.inserirFuncaoTransicao('q1','b','q2')
+a.inserirFuncaoTransicao('q2','a','q3')
+a.inserirFuncaoTransicao('q2','b','q4')
 a.inserirFuncaoTransicao('q3','a','q6')
-a.inserirFuncaoTransicao('q3','b','q7')
-a.inserirFuncaoTransicao('q4','a','q4')
-a.inserirFuncaoTransicao('q4','b','q5')
-a.inserirFuncaoTransicao('q5','a','q6')
-a.inserirFuncaoTransicao('q5','b','q7')
-a.inserirFuncaoTransicao('q6','a','q2')
-a.inserirFuncaoTransicao('q6','b','q3')
-a.inserirFuncaoTransicao('q7','a','q1')
-a.inserirFuncaoTransicao('q7','b','q0')
+a.inserirFuncaoTransicao('q3','b','q4')
+a.inserirFuncaoTransicao('q4','a','q3')
+a.inserirFuncaoTransicao('q4','b','q4')
+a.inserirFuncaoTransicao('q5','a','q5')
+a.inserirFuncaoTransicao('q5','b','q5')
+a.inserirFuncaoTransicao('q6','a','q6')
+a.inserirFuncaoTransicao('q6','b','q5')
+
+
+palavra=input("\nDigite a palavra a ser testada (alfabeto: a,b ):")
+
+if(a.transicaoEstendida('q0',palavra)=='q3'):
+    print("\nPalavra reconhecida")
+else:
+    print("Palavra não reconhecida")
+
 
 
