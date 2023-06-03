@@ -9,13 +9,19 @@ class Transicoes:
 class Automato:
     def __init__(self):
         self.alfabeto = ['a', 'b']
-        self.estados = ['q0', 'q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7']
+        self.estados = []
         self.transicoes = []
         self.estadoInicial = 'q0'
-        self.estadoFinal = ['q4', 'q5', 'q6', 'q7']
+        self.estadoFinal = []
 
     def inserirFuncaoTransicao(self, q, a, p):
         self.transicoes.append(Transicoes(q, a, p))
+
+    def inserirEstadoFinal(self, q):
+        self.estadoFinal.append(q)
+
+    def inserirEstados(self, q):
+        self.estados.append(q)
 
     def funcaoTransicao(self, q, a):
         for transicao in self.transicoes:
@@ -42,7 +48,6 @@ class Automato:
 
 automato = Automato()
 
-# Define the transition functions
 automato.inserirFuncaoTransicao('q0', 'a', 'q1')
 automato.inserirFuncaoTransicao('q0', 'b', 'q0')
 automato.inserirFuncaoTransicao('q1', 'a', 'q2')
@@ -60,6 +65,19 @@ automato.inserirFuncaoTransicao('q6', 'b', 'q3')
 automato.inserirFuncaoTransicao('q7', 'a', 'q1')
 automato.inserirFuncaoTransicao('q7', 'b', 'q0')
 
+automato.inserirEstadoFinal('q4')
+automato.inserirEstadoFinal('q5')
+automato.inserirEstadoFinal('q6')
+automato.inserirEstadoFinal('q7')
+
+automato.inserirEstados('q0')
+automato.inserirEstados('q1')
+automato.inserirEstados('q2')
+automato.inserirEstados('q3')
+automato.inserirEstados('q4')
+automato.inserirEstados('q5')
+automato.inserirEstados('q6')
+automato.inserirEstados('q7')
 
 palavra = input("Digite uma palavra: ")
 resultado = automato.verificarPalavra(palavra)
