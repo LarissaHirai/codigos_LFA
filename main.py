@@ -1,10 +1,10 @@
 import re
 
 class Transicoes:
-    def __init__(self, a, b, c):
-        self.arg1 = a
-        self.arg2 = b
-        self.arg3 = c
+    def __init__(self, q, w, p):
+        self.arg1 = q
+        self.arg2 = w
+        self.arg3 = p
 
 class Automato:
     def __init__(self):
@@ -40,7 +40,6 @@ class Automato:
         else:
             return "A palavra não pertence à linguagem reconhecida pelo autômato."
 
-# Create an instance of the Automato class
 automato = Automato()
 
 # Define the transition functions
@@ -62,8 +61,6 @@ automato.inserirFuncaoTransicao('q7', 'a', 'q1')
 automato.inserirFuncaoTransicao('q7', 'b', 'q0')
 
 
-# Get input word from the user
 palavra = input("Digite uma palavra: ")
 resultado = automato.verificarPalavra(palavra)
 print(resultado)
-# Verify if the word belongs to the language recognized
