@@ -8,44 +8,62 @@ class Transicoes:
 
 class Automato:
     def __init__(self):
-        self.alfabeto = ['a','b']
-        self.estados = ['q0','q1','q2','q3','q4','q5','q6', 'q7']
+        self.alfabeto = ['a', 'b']
+        self.estados = ['q0', 'q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7']
         self.transicoes = []
         self.estadoInicial = 'q0'
         self.estadoFinal = ['q4', 'q5', 'q6', 'q7']
 
     def inserirFuncaoTransicao(self, q, a, p):
-        self.transicoes.append(Transicoes(q,a,q))
+        self.transicoes.append(Transicoes(q, a, p))
 
     def funcaoTransicao(self, q, a):
-        for i in self.transicoes:
-            if i.arg1==q and i.arg2==a:
-                return i.arg3
+        for transicao in self.transicoes:
+            if transicao.arg1 == q and transicao.arg2 == a:
+                return transicao.arg3
         return -1
 
-    def transicaoEstendida(self,q,w):
+    def transicaoEstendida(self, q, w):
         if len(w) == 0:
             return q
-        a=w[len(w)-1]
-        x=w[:len(w)-1]
-        return self.funcaoTransicao(self.transicaoEstendida(q,x),a)
+        a = w[-1]
+        x = w[:-1]
+        return self.funcaoTransicao(self.transicaoEstendida(q, x), a)
 
-a=Automato()
-a.inserirFuncaoTransicao('q0','a','q1')
-a.inserirFuncaoTransicao('q0','b','q0')
-a.inserirFuncaoTransicao('q1','a','q2')
-a.inserirFuncaoTransicao('q1','b','q3')
-a.inserirFuncaoTransicao('q2','a','q4')
-a.inserirFuncaoTransicao('q2','b','q5')
-a.inserirFuncaoTransicao('q3','a','q6')
-a.inserirFuncaoTransicao('q3','b','q7')
-a.inserirFuncaoTransicao('q4','a','q4')
-a.inserirFuncaoTransicao('q4','b','q5')
-a.inserirFuncaoTransicao('q5','a','q6')
-a.inserirFuncaoTransicao('q5','b','q7')
-a.inserirFuncaoTransicao('q6','a','q2')
-a.inserirFuncaoTransicao('q6','b','q3')
-a.inserirFuncaoTransicao('q7','a','q1')
-a.inserirFuncaoTransicao('q7','b','q0')
+    def verificarPalavra(self, palavra):
+        estado_atual = self.estadoInicial
+        vetor = list(palavra)
+        for i in vetor:
+            estado_atual = self.transicaoEstendida(estado_atual, i)
+        if estado_atual in self.estadoFinal:
+            return "A palavra pertence à linguagem reconhecida pelo autômato."
+        else:
+            return "A palavra não pertence à linguagem reconhecida pelo autômato."
+
+# Create an instance of the Automato class
+automato = Automato()
+
+# Define the transition functions
+automato.inserirFuncaoTransicao('q0', 'a', 'q1')
+automato.inserirFuncaoTransicao('q0', 'b', 'q0')
+automato.inserirFuncaoTransicao('q1', 'a', 'q2')
+automato.inserirFuncaoTransicao('q1', 'b', 'q3')
+automato.inserirFuncaoTransicao('q2', 'a', 'q4')
+automato.inserirFuncaoTransicao('q2', 'b', 'q5')
+automato.inserirFuncaoTransicao('q3', 'a', 'q6')
+automato.inserirFuncaoTransicao('q3', 'b', 'q7')
+automato.inserirFuncaoTransicao('q4', 'a', 'q4')
+automato.inserirFuncaoTransicao('q4', 'b', 'q5')
+automato.inserirFuncaoTransicao('q5', 'a', 'q6')
+automato.inserirFuncaoTransicao('q5', 'b', 'q7')
+automato.inserirFuncaoTransicao('q6', 'a', 'q2')
+automato.inserirFuncaoTransicao('q6', 'b', 'q3')
+automato.inserirFuncaoTransicao('q7', 'a', 'q1')
+automato.inserirFuncaoTransicao('q7', 'b', 'q0')
 
 
+# Get input word from the user
+palavra = input("Digite uma palavra: ")
+resultado = automato.verificarPalavra(palavra)
+print(resultado)
+# Verify if the word belongs to the language recognized
