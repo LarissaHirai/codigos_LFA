@@ -1,3 +1,13 @@
+'''
+Universidade Federal do Tocantins - Campus Palmas
+Disciplina: Linguagens Formais e Autômatos
+Professor: Alexandre Rossini
+Alunas: Fernanda Plessim e Larissa Hirai
+Curso: Ciência da Computação
+'''
+
+# Trabalho 1
+
 import re
 
 class Transicoes:
