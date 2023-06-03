@@ -44,7 +44,7 @@ a.inserirFuncaoTransicao('q4','b','q4')
 a.inserirFuncaoTransicao('q5','a','q5')
 a.inserirFuncaoTransicao('q5','b','q5')
 a.inserirFuncaoTransicao('q6','a','q6')
-a.inserirFuncaoTransicao('q6','b','q5')
+a.inserirFuncaoTransicao('q6','b','q4')
 
 
 palavra=input("\nDigite a palavra a ser testada (alfabeto: a,b ):")
