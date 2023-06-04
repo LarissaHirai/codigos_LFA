@@ -1,14 +1,10 @@
 # Códigos referentes a disciplina de Linguagens Formais e Autômatos
 ## Curso: Ciência da Computação - UFT Campus Palmas
-### Trabalho 1
-Implementar computacionalmente a função de transição estendida do Autômato Finito Determinístico (AFD). A função de transição estendida é um função que toma um estado q ∈ Q e uma palavra w ∈ Σ* e retorna um estado p ∈ Q, ou seja, δ(q,w)=p. Em outras palavras, definimos δ por indução sobre o comprimento da palavra de entrada:
+### Trabalho 3
+Implementar computacionalmente em um linguagem de programação de alto nível, uma aplicação para validar o preenchimento de um formulário feito por algum usuário. Para isso você deverá utilizar a bilblioteca de expressões da linguagem de programação, que em python é "import re". O formulário deverá conter os seguintes campos:
 
  
-- Base: δ(q,ε)=q
-- Isto é, se estamos no estado q e lemos nenhuma entrada, então ainda continuamos no estado q.
-
- 
-Indução: Suponha que w é uma palavra da forma xa, ou seja, a é o último símbolo de w, e x é a palavra que consiste em tudo, menos o último símbolo. Exemplo, w=1101 é desmembrado em x=110 e a=1. Assim, o passo de indução é: δ(q,w) = δ(δ(q,x),a)
-Como tarefa, a implementação pode ser feita em qualquer linguagem de programação de alto nível e deverá ser utilizado, para isto, o AFD abaixo:
-
-- [AFD](https://ava.uft.edu.br/palmas/pluginfile.php/368113/mod_assign/intro/Captura%20de%20Tela%202023-05-23%20%C3%A0s%2014.53.36.png)
+- Nome: no máximo 50 símbolos alfabéticos e espaço [a-zA-Z ].
+- CPF: somente algarismos numéricos [0-9] ou algarismos no formato padrão do CPF "000.000.000-00", ou seja, com ponto na posições 3 e 7 da string e hífen na posição 11.
+- E-mail: o nome de usuário deverá ter no mínimo 2 símbolos alfanuméricos, ponto ou underline [\w\._] seguido de '@', que por sua vez concatena com o domínio (utilizar a mesma regra do nome do usuário). Para terminar, depois do domínio, deverá ter, obrigatoriamente, um ponto seguido do tipo de registro, que é formado por três símbolos alfabéticos minúsculos [a-z].
+- Telefone: dois formatos possíveis, sendo o primeiro constituído por somente 11 números; e o segundo pelo "(00)00000-0000".
