@@ -11,19 +11,19 @@ Curso: Ciência da Computação
 import re
 
 def validar_nome(nome):
-    padrao = r'^[a-zA-Z ]{1,50}$'  # Expressão regular para validar o nome
+    padrao = '\A^[a-zA-Z ]{1,50}$\Z'  # Expressão regular para validar o nome
     return re.match(padrao, nome) is not None
 
 def validar_cpf(cpf):
-    padrao = r'^\d{3}\.\d{3}\.\d{3}-\d{2}$|^\d{11}$'  # Expressão regular para validar o CPF
+    padrao = '\A^\d{3}\.\d{3}\.\d{3}-\d{2}$|^\d{11}$\Z'  # Expressão regular para validar o CPF
     return re.match(padrao, cpf) is not None
 
 def validar_email(email):
-    padrao = r'^[\w._]{2,}@[\w._]{2,}\.[a-z]{3}$'  # Expressão regular para validar o e-mail
+    padrao = '\A^[\w._]{2,}@[\w._]{2,}\.[a-z]{3}$\Z'  # Expressão regular para validar o e-mail
     return re.match(padrao, email) is not None
 
 def validar_telefone(telefone):
-    padrao = r'^\d{11}$|^\(\d{2}\)\d{5}-\d{4}$'  # Expressão regular para validar o telefone
+    padrao = '\A^\d{11}$|^\(\d{2}\)\d{5}-\d{4}$\Z'  # Expressão regular para validar o telefone
     return re.match(padrao, telefone) is not None
 
 def validar_formulario(nome, cpf, email, telefone):
