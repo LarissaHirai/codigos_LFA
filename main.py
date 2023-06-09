@@ -6,7 +6,7 @@ Alunas: Fernanda Plessim e Larissa Hirai
 Curso: Ciência da Computação
 '''
 
-# Trabalho 2
+# Trabalho 3
 
 import re
 
@@ -26,37 +26,31 @@ def validar_telefone(telefone):
     padrao = r'^\d{11}$|^\(\d{2}\)\d{5}-\d{4}$'  # Expressão regular para validar o telefone
     return re.match(padrao, telefone) is not None
 
+def validar_formulario(nome, cpf, email, telefone):
+    v_nome = validar_nome(nome)
+    v_cpf = validar_cpf(cpf)
+    v_email = validar_email(email)
+    v_telefone = validar_telefone(telefone)
+    if v_nome == True:
+        print("Nome válido!")
+    else:
+        print("Nome inválido! O nome deve conter no máximo 50 símbolos alfabéticos e espaços.")
+    if v_cpf == True:
+        print("CPF válido!")
+    else:
+        print("CPF inválido! O CPF deve conter apenas algarismos numéricos (0-9) ou estar no formato padrão (000.000.000-00).")
+    if v_email == True:
+        print("E-mail válido!")
+    else:
+        print("E-mail inválido! O E-mail deve seguir o formato adequado.")
+    if v_telefone == True:
+        print("Telefone válido!")
+    else:
+        print("Telefone inválido! O telefone deve estar em um dos formatos permitidos.")
 
-op = 15
-while op != 0:
-    op = int(input("\nO que deseja verificar?\n1-Nome\n2-CPF\n3-E-mail\n4-Telefone\n0-Sair\n"))
-    if op == 1:
-        nome = input("Digite o nome: ")
 
-        if validar_nome(nome):
-            print("Nome válido!")
-        else:
-            print("Nome inválido! O nome deve conter no máximo 50 símbolos alfabéticos e espaços.")
-    elif op == 2:
-        cpf = input("Digite o CPF: ")
-
-        if validar_cpf(cpf):
-            print("CPF válido!")
-        else:
-            print("CPF inválido! O CPF deve conter apenas algarismos numéricos (0-9) ou estar no formato padrão (000.000.000-00).")
-    elif op == 3:
-        email = input("Digite o E-mail: ")
-
-        if validar_email(email):
-            print("E-mail válido!")
-        else:
-            print("E-mail inválido! O E-mail deve seguir o formato adequado.")
-    elif op == 4:
-        telefone = input("Digite o telefone: ")
-
-        if validar_telefone(telefone):
-            print("Telefone válido!")
-        else:
-            print("Telefone inválido! O telefone deve estar em um dos formatos permitidos.")
-
-print("Saindo...")
+nome = input("Digite o nome: ")
+cpf = input("Digite o CPF: ")
+email = input("Digite o E-mail: ")
+telefone = input("Digite o telefone: ")
+validar_formulario(nome, cpf, email, telefone)
